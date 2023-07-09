@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: server-config
+  labels:
+    server: config
+data:
+  USER_SERVICE_DB_URI: mongodb+srv://sourav:<password>@cluster0.lzczl9z.mongodb.net/auth?retryWrites=true&w=majority

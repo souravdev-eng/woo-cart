@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
+        - name: auth
+          image: souravdeveloper/woocart-auth
+          envFrom:
+            - configMapRef:
+                name: server-config
+            - secretRef:
+                name: server-secret
+          env:
+            - name: JWT_EXPIRE_IN
+              value: 90d
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-service
+spec:
+  selector:
+    app: auth
+  ports:
+    - name: auth
+      port: 4000
+      targetPort: 4000
+      protocol: TCP
