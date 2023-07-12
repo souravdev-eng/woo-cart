@@ -1,0 +1,16 @@
+root = "."
+tmp_dir = "bin"
+build_dir = "bin"
+
+[build]
+  bin = "bin/main"
+  exclude_dir = ["bin", "vendor"]
+
+[log]
+  prefix = "air"
+  time_format = "2006-01-02 15:04:05"
+  time_zone = "UTC"
+  color = true
+
+[misc]
+  clean_on_exit = false
