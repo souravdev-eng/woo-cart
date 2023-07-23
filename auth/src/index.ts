@@ -4,6 +4,9 @@ import { app } from './server';
 const PORT = 4000;
 
 const start = async () => {
+  if (!process.env.JWT_EXPIRE_IN) {
+    throw new Error('JWT_EXPIRE_IN must be defined');
+  }
   if (!process.env.JWT_KEY) {
     throw new Error('JWT_KEY must be defined');
   }
