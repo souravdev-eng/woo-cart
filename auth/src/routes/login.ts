@@ -8,7 +8,7 @@ import { User } from '../models/userModel';
 const router = Router();
 
 router.post(
-  '/api/users/login',
+  '/login',
   [
     body('email').notEmpty().withMessage('Oops! Email is required.'),
     body('password').notEmpty().withMessage('Oops! Password is required.'),
@@ -28,9 +28,13 @@ router.post(
       return next(new BadRequestError(`Oops! Invalid email or password`));
     }
 
-    const token = jwt.sign({ id: existingUser.id }, process.env.JWT_KEY!, {
-      expiresIn: process.env.JWT_EXPIRE_IN!,
-    });
+    const token = jwt.sign(
+      { id: existingUser.id, email: existingUser.email },
+      process.env.JWT_KEY!,
+      {
+        expiresIn: process.env.JWT_EXPIRE_IN!,
+      }
+    );
 
     req.session = {
       jwt: token,
@@ -40,4 +44,4 @@ router.post(
   }
 );
 
-export { router as LoginUserRoute };
+export { router as loginUserRoute };

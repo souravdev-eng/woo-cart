@@ -8,7 +8,7 @@ import { User } from '../models/userModel';
 const router = Router();
 
 router.post(
-  '/api/users/signup',
+  '/signup',
   [
     body('name').notEmpty().withMessage('Oops! Please provide your name'),
     body('email').isEmail().withMessage('Oops! Please provide valid email address'),
@@ -37,7 +37,7 @@ router.post(
     const user = User.build({ name, email, password, conformPassword });
     await user.save();
 
-    const token = jwt.sign({ id: user.id }, process.env.JWT_KEY!, {
+    const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_KEY!, {
       expiresIn: process.env.JWT_EXPIRE_IN!,
     });
 
@@ -49,4 +49,4 @@ router.post(
   }
 );
 
-export { router as SignUpRoute };
+export { router as signUpRoute };
