@@ -10,6 +10,7 @@ interface UserAttars {
 
 interface UserModel extends mongoose.Model<UserDoc> {
   build(attars: UserAttars): UserDoc;
+  comparePassword(userPassword: string, userDBPassword: string): Promise<boolean>;
 }
 
 interface UserDoc extends mongoose.Document {
@@ -62,6 +63,10 @@ userSchema.pre('save', async function (next) {
   }
   next();
 });
+
+userSchema.statics.comparePassword = async (userPassword: string, userDBPassword: string) => {
+  return await bcrypt.compare(userPassword, userDBPassword);
+};
 
 userSchema.statics.build = (attars: UserAttars) => {
   return new User(attars);
