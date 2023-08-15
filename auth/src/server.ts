@@ -2,11 +2,10 @@ import 'express-async-errors';
 import cors from 'cors';
 import cookieSession from 'cookie-session';
 import express, { NextFunction, Request, Response } from 'express';
+import { errorHandler, NotFoundError } from '@woo-cart/common';
 
-import { errorHandler } from './middleware/errorHandler';
 import { signUpRoute } from './routes/signup';
 import { loginUserRoute } from './routes/login';
-import { NotFoundError } from './errors/notFoundError';
 import { currentUserRoute } from './routes/current-user';
 
 const app = express();
