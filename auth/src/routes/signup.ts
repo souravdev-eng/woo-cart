@@ -1,8 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { body } from 'express-validator';
 import { Request, Response, NextFunction, Router } from 'express';
-import { BadRequestError } from '../errors/badRequestError';
-import { validateRequest } from '../middleware/validateRequest';
+import { BadRequestError, validateRequest } from '@woo-cart/common';
 import { User } from '../models/userModel';
 
 const router = Router();

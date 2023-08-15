@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction, Router } from 'express';
-import { currentUser } from '../middleware/current-user';
-import { UnAuthorizedError } from '../errors/unAuthorizedError';
+import { currentUser, UnAuthorizedError } from '@woo-cart/common';
 
 const router = Router();
 
