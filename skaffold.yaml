@@ -16,6 +16,14 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
+    - image: souravdeveloper/woocart-product
+      context: product
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
     # - image: souravdeveloper/woocart-cart
     #   context: cart
     #   docker:
