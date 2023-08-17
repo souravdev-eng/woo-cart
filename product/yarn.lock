@@ -1614,10 +1614,10 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@woo-cart/common@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@woo-cart/common/-/common-1.0.2.tgz#1f2ce53d92123e62ac9fc34effd0cad4bbe79bd7"
-  integrity sha512-9v8PQUALRX+wHt/plHdowaXjVrry/xUWrXFmLNOMVfVHo7LQO4U1Eb2SJSuavuCXUYhsAy6nxDUDDlm+ZLemfg==
+"@woo-cart/common@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@woo-cart/common/-/common-1.0.3.tgz#49be28a6c76581c4a4c70c39eae6f403a713d6c1"
+  integrity sha512-FXF8AdSgPjETUbdglVKmPDYNWiAdonzymmwE8Ug9BG6kIU+IvCAJoyvBAa8b1ODwc5oPrPGO02m9D3d5haNS1w==
   dependencies:
     "@types/cookie-session" "^2.0.44"
     "@types/express" "^4.17.17"
