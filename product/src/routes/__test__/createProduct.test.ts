@@ -1,6 +1,5 @@
 import request from 'supertest';
 import { app } from '../../server';
-import { describe } from 'node:test';
 
 describe('Success Case', () => {
   it('should return 201 if product successfully created', async () => {
