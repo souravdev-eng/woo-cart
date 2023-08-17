@@ -22,3 +22,4 @@ __exportStar(require("./errors/unAuthorizedError"), exports);
 __exportStar(require("./middleware/current-user"), exports);
 __exportStar(require("./middleware/errorHandler"), exports);
 __exportStar(require("./middleware/validateRequest"), exports);
+__exportStar(require("./middleware/requireAuth"), exports);
