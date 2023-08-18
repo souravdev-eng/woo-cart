@@ -6,6 +6,7 @@ import { errorHandler, NotFoundError, currentUser } from '@woo-cart/common';
 import { productCreateRoute } from './routes/createProduct';
 import { getAllProductRoute } from './routes/getAllProduct';
 import { getProductByIdRoute } from './routes/getProductById';
+import { deleteProductByIdRoute } from './routes/deleteProduct';
 const app = express();
 
 app.set('trust proxy', true);
@@ -24,6 +25,7 @@ app.use(currentUser);
 app.use('/api/product', productCreateRoute);
 app.use('/api/product', getAllProductRoute);
 app.use('/api/product', getProductByIdRoute);
+app.use('/api/product', deleteProductByIdRoute);
 
 app.use('*', (req: Request, res: Response, next: NextFunction) => {
   return next(new NotFoundError(`${req.originalUrl} is not find to this server!`));
