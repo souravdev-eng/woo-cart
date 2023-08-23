@@ -2,6 +2,7 @@ import { Request, Response, NextFunction, Router } from 'express';
 import { requireAuth, validateRequest } from '@woo-cart/common';
 import { Product } from '../models/productModel';
 import { body } from 'express-validator';
+
 const router = Router();
 
 router.post(

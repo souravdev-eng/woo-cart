@@ -7,3 +7,5 @@ metadata:
 data:
   USER_SERVICE_DB_URI: mongodb+srv://sourav:<password>@cluster0.lzczl9z.mongodb.net/auth?retryWrites=true&w=majority
   PRODUCT_SERVICE_DB_URI: mongodb+srv://sourav:<password>@cluster0.mfdndyg.mongodb.net/product?retryWrites=true&w=majority
+  AWS_REGION: 'ap-south-1'
+  AWS_BUCKET_NAME: 'woo-cart-product-images'

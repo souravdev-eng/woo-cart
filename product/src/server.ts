@@ -1,5 +1,6 @@
 import 'express-async-errors';
 import cors from 'cors';
+
 import cookieSession from 'cookie-session';
 import express, { NextFunction, Request, Response } from 'express';
 import { errorHandler, NotFoundError, currentUser } from '@woo-cart/common';
@@ -7,9 +8,11 @@ import { productCreateRoute } from './routes/createProduct';
 import { getAllProductRoute } from './routes/getAllProduct';
 import { getProductByIdRoute } from './routes/getProductById';
 import { deleteProductByIdRoute } from './routes/deleteProduct';
+
 const app = express();
 
 app.set('trust proxy', true);
+app.use(express.urlencoded({ extended: false }));
 
 app.use(
   cookieSession({
