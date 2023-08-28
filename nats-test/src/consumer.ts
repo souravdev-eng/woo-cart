@@ -16,7 +16,11 @@ stan.on('connect', () => {
   });
 
   const eventName = 'product:created';
-  const options = stan.subscriptionOptions().setDeliverAllAvailable().setManualAckMode(true);
+  const options = stan
+    .subscriptionOptions()
+    .setDeliverAllAvailable()
+    .setManualAckMode(true)
+    .setDurableName('accounting-service');
 
   const subscription = stan.subscribe(eventName, 'product-service-queue-group', options);
 
