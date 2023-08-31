@@ -8,3 +8,11 @@ export * from './middleware/current-user';
 export * from './middleware/errorHandler';
 export * from './middleware/validateRequest';
 export * from './middleware/requireAuth';
+
+export * from './events/baseListener';
+export * from './events/basePublisher';
+export * from './events/productCreatedEvent';
+
+export * from './listeners/ProductCreatedListener';
+export * from './publisher/productCreatedPublisher';
+export * from './types/subject';
