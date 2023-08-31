@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction, Router } from 'express';
-import { requireAuth, validateRequest } from '@woo-cart/common';
+import { ProductCreatedPublisher, requireAuth, validateRequest } from '@woo-cart/common';
 import { Product } from '../models/productModel';
 import { body } from 'express-validator';
+import { natsWrapper } from '../nats-wrapper';
 
 const router = Router();
 
@@ -31,6 +32,15 @@ router.post(
     });
 
     await product.save();
+
+    await new ProductCreatedPublisher(natsWrapper.client).publish({
+      id: product.id,
+      description: product.description,
+      imageUrl: product.imageUrl,
+      price: product.price,
+      seller: product.seller,
+      title: product.title,
+    });
 
     res.status(201).send(product);
   }

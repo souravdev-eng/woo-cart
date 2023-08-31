@@ -21,6 +21,10 @@ spec:
             - secretRef:
                 name: server-secret
           env:
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
             - name: JWT_EXPIRE_IN
               value: 90d
 ---

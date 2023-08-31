@@ -1,5 +1,6 @@
-import nats, { Message } from 'node-nats-streaming';
+import nats from 'node-nats-streaming';
 import { randomBytes } from 'crypto';
+import { ProductCreatedListener } from './listeners/ProductCreatedListener';
 
 console.clear();
 
@@ -15,24 +16,7 @@ stan.on('connect', () => {
     process.exit();
   });
 
-  const eventName = 'product:created';
-  const options = stan
-    .subscriptionOptions()
-    .setDeliverAllAvailable()
-    .setManualAckMode(true)
-    .setDurableName('accounting-service');
-
-  const subscription = stan.subscribe(eventName, 'product-service-queue-group', options);
-
-  subscription.on('message', (msg: Message) => {
-    console.log(`Event received: ${eventName}`);
-    const data = msg.getData();
-
-    if (typeof data === 'string') {
-      console.log(`Received event #${msg.getSequence()}, with data: ${data}`);
-      msg.ack();
-    }
-  });
+  new ProductCreatedListener(stan).listen();
 });
 
 process.on('SIGINT', () => stan.close());
