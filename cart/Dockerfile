@@ -1,14 +1,11 @@
-FROM golang:1.20
+FROM node:14.16.0-alpine3.13
 
 WORKDIR /app
 
-RUN go install github.com/cosmtrek/air@latest
+COPY  ./package.json .
 
-COPY go.mod . 
+RUN npm install --only=prod
+
 COPY . .
 
-RUN go build -o bin .
-
-CMD ["air", "-c", ".air.toml"]
-
-
+CMD [ "npm", "start" ]
