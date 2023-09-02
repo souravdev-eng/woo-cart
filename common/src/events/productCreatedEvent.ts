@@ -8,6 +8,7 @@ export interface ProductCreatedEvent {
     imageUrl: string;
     description: string;
     price: number;
+    stock: number;
     seller: string;
   };
 }
