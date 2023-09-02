@@ -26,6 +26,5 @@ __exportStar(require("./middleware/requireAuth"), exports);
 __exportStar(require("./events/baseListener"), exports);
 __exportStar(require("./events/basePublisher"), exports);
 __exportStar(require("./events/productCreatedEvent"), exports);
-__exportStar(require("./listeners/ProductCreatedListener"), exports);
 __exportStar(require("./publisher/productCreatedPublisher"), exports);
 __exportStar(require("./types/subject"), exports);

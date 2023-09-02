@@ -10,6 +10,5 @@ export * from './middleware/requireAuth';
 export * from './events/baseListener';
 export * from './events/basePublisher';
 export * from './events/productCreatedEvent';
-export * from './listeners/ProductCreatedListener';
 export * from './publisher/productCreatedPublisher';
 export * from './types/subject';
