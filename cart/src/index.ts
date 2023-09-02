@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import { app } from './server';
 import { natsWrapper } from './nats-wrapper';
+import { ProductCreatedListener } from './events/listeners/productCreatedListener';
 
 const PORT = 4000;
 
@@ -48,10 +49,13 @@ const start = async () => {
     process.on('SIGINT', () => natsWrapper.client.close());
     process.on('SIGTERM', () => natsWrapper.client.close());
 
+    new ProductCreatedListener(natsWrapper.client).listen();
+
     await mongoose.connect(process.env.CART_SERVICE_DB_URI!, {
       user: process.env.MONGO_USER!,
       pass: process.env.PRODUCT_MONGO_PASSWORD!,
     });
+
     console.log('Cart DB connected successfully...');
   } catch (error: any) {
     console.log('DB connection Error', error.message);

@@ -27,6 +27,7 @@ router.post(
       title: req.body.title,
       description: req.body.description,
       price: req.body.price,
+      stock: req.body.stock,
       imageUrl: req.body.imageUrl,
       seller: req?.currentUser?.id!,
     });
@@ -39,6 +40,7 @@ router.post(
       imageUrl: product.imageUrl,
       price: product.price,
       seller: product.seller,
+      stock: product.stock,
       title: product.title,
     });
 
