@@ -7,6 +7,7 @@ interface ProductAttrs {
   price: number;
   stock: number;
   seller: string;
+  isInCart: boolean;
 }
 
 interface ProductDoc extends mongoose.Document {
@@ -16,6 +17,7 @@ interface ProductDoc extends mongoose.Document {
   price: number;
   stock: number;
   seller: string;
+  isInCart: boolean;
 }
 
 interface ProductModel extends mongoose.Model<ProductDoc> {
@@ -45,6 +47,10 @@ const productSchema = new mongoose.Schema<ProductAttrs>(
     seller: {
       type: String,
       required: true,
+    },
+    isInCart: {
+      type: Boolean,
+      default: false,
     },
   },
   {

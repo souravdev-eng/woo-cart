@@ -4,6 +4,7 @@ import cors from 'cors';
 import cookieSession from 'cookie-session';
 import express, { NextFunction, Request, Response } from 'express';
 import { errorHandler, NotFoundError, currentUser } from '@woo-cart/common';
+import { cartCreateRoute } from './routes/createCart';
 
 const app = express();
 
@@ -20,6 +21,8 @@ app.use(
 app.use(express.json());
 app.use(cors());
 app.use(currentUser);
+
+app.use('/api/cart', cartCreateRoute);
 
 app.use('*', (req: Request, res: Response, next: NextFunction) => {
   return next(new NotFoundError(`${req.originalUrl} is not find to this server!`));

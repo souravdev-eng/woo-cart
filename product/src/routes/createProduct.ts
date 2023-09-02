@@ -28,6 +28,7 @@ router.post(
       description: req.body.description,
       price: req.body.price,
       stock: req.body.stock,
+      isInCart: req.body.isInCart,
       imageUrl: req.body.imageUrl,
       seller: req?.currentUser?.id!,
     });

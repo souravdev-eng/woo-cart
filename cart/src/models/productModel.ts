@@ -10,11 +10,12 @@ interface ProductAttrs {
   seller: string;
 }
 
-interface ProductDoc extends mongoose.Document {
+export interface ProductDoc extends mongoose.Document {
   title: string;
   imageUrl: string;
   description: string;
   price: number;
+  stock: number;
   seller: string;
 }
 
