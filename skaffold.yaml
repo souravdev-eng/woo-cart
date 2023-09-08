@@ -32,3 +32,13 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
+    - image: souravdeveloper/woocart-client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'app/**/*.ts'
+            dest: .
+          - src: 'app/**/*.tsx'
+            dest: .
